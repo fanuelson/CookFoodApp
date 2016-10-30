@@ -1,0 +1,21 @@
+<div class="ui small basic modal">
+	<div class="ui icon header">
+		<i class="trash icon"></i>
+		<p class="blue">Confirmação</p>
+	</div>
+	<div class="ui centered text-align-center">
+		<p>{{mensagem}}</p>
+	</div>
+	<div class="actions">
+		<div ng-click="onClickNo()"
+			ng-class="{'disabled' : isBtnNoDisabled }"
+			class="ui cancel red basic inverted  button">
+			<i class="remove icon"></i> Não
+		</div>
+		<div ng-click="onClickYes()"
+			ng-class="{'disabled' : isBtnYesDisabled }"
+			class="ui ok green inverted button">
+			<i class="checkmark icon"></i> Sim
+		</div>
+	</div>
+</div>

@@ -1,4 +1,4 @@
-function consultaFornecedorController($scope, APP_CONFIG, fornecedorService) {
+function consultaFornecedorController($scope, $mdToast,APP_CONFIG, fornecedorService) {
 
 	$scope.headerPage = "Fornecedor";
 
@@ -69,6 +69,15 @@ function consultaFornecedorController($scope, APP_CONFIG, fornecedorService) {
 		$scope.fornecedorExclusao = forn;
 	}
 
+	$scope.showSimpleToast = function(message) {
+		$mdToast.show(
+			$mdToast.simple()
+			.textContent(message)
+			.position('bottom right')
+			.hideDelay(3000)
+		);
+	};
+
 	$scope.del = function() {
 		console.log(JSON.stringify($scope.fornecedorExclusao));
 		startTabelaLoading();
@@ -76,6 +85,7 @@ function consultaFornecedorController($scope, APP_CONFIG, fornecedorService) {
 		$promiseDelete
 			.success(function(data) {
 				$scope.findAllPageFilterBy($scope.page);
+				$scope.showSimpleToast(data.mensagem);
 			})
 			.error(function(data){
 				$scope.messageError = data.message;
@@ -104,6 +114,7 @@ function consultaFornecedorController($scope, APP_CONFIG, fornecedorService) {
 
 var depends = [
     '$scope',
+	 '$mdToast',
     'APP_CONFIG',
     'fornecedorService',
     consultaFornecedorController ]

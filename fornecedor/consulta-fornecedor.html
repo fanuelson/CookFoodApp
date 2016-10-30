@@ -2,9 +2,9 @@
 	<h1>{{headerPage}}</h1>
 	<div class="ui grid" >
 		<div class="sixteen wide mobile twelve wide computer twelve wide tablet column" >
-			 <div ng-class="{ 'loading' : tabelaLoading }" 
+			 <div ng-class="{ 'loading' : tabelaLoading }"
 			 	class="ui raised segment">
-  					
+
   					<h3>Filtro</h3>
   					<div class="ui divider" ></div>
   					<div class="ui grid form" >
@@ -12,34 +12,34 @@
 							<div class="field">
 							    <label>Nome</label>
 							    <input type="text" ng-model="filtroPesquisa.nome" />
-							  </div>  					
+							  </div>
 	  					</div>
 	  					<div class="sixteen wide mobile four wide computer four wide tablet column" >
 							<div class="field">
 							    <label>CPF/CNPJ</label>
 							    <input type="text" ng-model="filtroPesquisa.cpfCnpj" />
-							  </div>  					
+							  </div>
 	  					</div>
 	  					<div class="sixteen wide mobile four wide computer four wide tablet column" >
 							<div class="field">
 							    <label>Celular</label>
 							    <input type="text" ng-model="filtroPesquisa.celular" ui-number-mask="0"/>
-							  </div>  					
+							  </div>
 	  					</div>
 	  					<div class="sixteen wide mobile four wide computer four wide tablet column" >
 							<div class="field">
 							    <label>Telefone</label>
 							    <input type="text" ng-model="filtroPesquisa.telefone" ui-number-mask="0" />
-							  </div>  					
+							  </div>
 	  					</div>
-	  					
+
 	  					<div class="text-align-right sixteen wide column">
 									<button ng-click="limparFiltroPesquisa()" class="ui button">Limpar</button>
 									<btn-pesquisar pesquisa-action="pesquisar()"></btn-pesquisar>
-	
+
 						</div>
   					</div>
-				 	
+
   					<div class="ui hidden divider"></div>
   					<div class="ui divider"></div>
 					<table class="ui selectable celled striped sortable table">
@@ -66,13 +66,13 @@
 							</tr>
 						</thead>
 						<tbody>
-							<tr ng-if="fornecedorPage.totalElements === 0" 
+							<tr ng-if="fornecedorPage.totalElements === 0"
 								class="ui negative" >
 								<td colspan="6" >
 									Nenhum registro encontrado
 								</td>
 							</tr>
-							<tr ng-if="fornecedorPage.totalElements > 0" 
+							<tr ng-if="fornecedorPage.totalElements > 0"
 								ng-repeat="forn in fornecedorPage.content track by forn.id">
 								<td>{{forn.id}}</td>
 								<td>{{forn.nome}}</td>
@@ -82,10 +82,11 @@
 								<td>
 									<div class="ui right aligned grid" >
 										<div class="sixteen wide column" >
-											<a	href="" 
-												ng-click="setFornecedorExclusao(forn)" 
-												onclick="abrirModalConfirmacao()" 
-												data-tooltip="Excluir" 
+											<a	href=""
+												ng-click="setFornecedorExclusao(forn)"
+												modal-confirmacao-opener
+												target-modal-id="'#modalConfirmacao'"
+												data-tooltip="Excluir"
 												data-position="left center"
 												class="ui float-right btnExcluir">
 												<i class="material-icons md-red" >cancel</i>
@@ -100,17 +101,24 @@
 								<th colspan="6">
 									<div class="ui pagination menu font-12">
 								        <a ng-if="fornecedorPage.number > 0"
-								        	ng-click="findAllPageFilterBy(fornecedorPage.number-1)" class="icon item">
+								        	ng-click="findAllPageFilterBy(fornecedorPage.number-1)"
+											class="icon item">
 								          <i class="left chevron icon"></i>
 								        </a>
+
 								        <a ng-repeat="pagina in getPages(fornecedorPage.totalPages) track by $index"
 								        	ng-click="findAllPageFilterBy($index)"
-								        	ng-class=" $index == fornecedorPage.number ? 'active' : ''"
-								        	class="item ">{{$index + 1}}</a>
-								        <a ng-if="fornecedorPage.number < fornecedorPage.totalPages - 1" 
-								        ng-click="findAllPageFilterBy(fornecedorPage.number+1)" class="icon item">
-								          <i class="right chevron icon"></i>
+								        	ng-class=" $index == fornecedorPage.number ? 'active' : '' "
+								        	class="item ">
+												{{$index + 1}}
+											</a>
+
+								        <a ng-if="fornecedorPage.number < fornecedorPage.totalPages - 1"
+								        	ng-click="findAllPageFilterBy(fornecedorPage.number+1)"
+											class="icon item">
+								         	<i class="right chevron icon"></i>
 								        </a>
+
 							      </div>
 								</th>
 							</tr>
@@ -126,31 +134,10 @@
   				</div>
 		</div>
 	</div>
-	
-	<div id="modalConfirmacao" class="ui small basic modal">
-		<div class="ui icon header">
-			<i class="trash icon"></i>
-			<p class="blue">Confirmação</p>
-		</div>
-		<div class="ui centered text-align-center">
-			<p>Tem certeza que deseja excluir o registro?</p>
-		</div>
-		<div class="actions">
-			<div class="ui cancel red basic inverted  button">
-				<i class="remove icon"></i> Não
-			</div>
-			<div ng-click="del()" class="ui ok green inverted button">
-				<i class="checkmark icon"></i> Sim
-			</div>
-		</div>
-	</div>
-	
-	<script type="text/javascript">
 
-			function abrirModalConfirmacao() {
-				$('#modalConfirmacao').modal('show');
-			}
+	<modal-confirmacao id="modalConfirmacao"
+		mensagem="'Tem certeza que deseja excluir o registro?'"
+		on-click-yes="del()">
+	</modal-confirmacao>
 
-	</script>
-	
 </div>

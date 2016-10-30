@@ -1,4 +1,4 @@
-function consultaProdutosController($scope, APP_CONFIG ,produtoService) {
+function consultaProdutosController($scope, $mdToast, APP_CONFIG ,produtoService) {
 
 	$scope.headerMessage = "Produtos";
 
@@ -49,11 +49,21 @@ function consultaProdutosController($scope, APP_CONFIG ,produtoService) {
 		$promiseDelete
 			.success(function(data) {
 				$scope.findAllProductsPage($scope.produtosPage.number);
+				$scope.showSimpleToast(data.mensagem);
 			})
 			.error(function(data){
 				$scope.messageError = data.message;
 			});
 	}
+
+	$scope.showSimpleToast = function(message) {
+		$mdToast.show(
+			$mdToast.simple()
+			.textContent(message)
+			.position('bottom right')
+			.hideDelay(3000)
+		);
+	};
 
 	$scope.getValidatorMessageFor = function (campo) {
 		if($scope.error) {
@@ -97,6 +107,7 @@ function consultaProdutosController($scope, APP_CONFIG ,produtoService) {
 
 var depends = [
    '$scope',
+	'$mdToast',
    'APP_CONFIG',
    'produtoService',
    consultaProdutosController

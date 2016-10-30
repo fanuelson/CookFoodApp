@@ -1,4 +1,4 @@
-function consultaInsumoController($scope, APP_CONFIG, insumoService, medidaService) {
+function consultaInsumoController($scope, $mdToast, APP_CONFIG, insumoService, medidaService) {
 
 	$scope.headerMessage = "Consulta Insumos";
 
@@ -72,11 +72,21 @@ function consultaInsumoController($scope, APP_CONFIG, insumoService, medidaServi
 		$promiseDelete
 			.success(function(data) {
 				$scope.findAllInsumosPageFilterBy($scope.page);
+				$scope.showSimpleToast(data.mensagem);
 			})
 			.error(function(data){
 				$scope.messageError = data.message;
 			});
 	}
+
+	$scope.showSimpleToast = function(message) {
+		$mdToast.show(
+			$mdToast.simple()
+			.textContent(message)
+			.position('bottom right')
+			.hideDelay(3000)
+		);
+	};
 
 	$scope.getPages = function(num) {
 		return new Array(num);
@@ -94,6 +104,7 @@ function consultaInsumoController($scope, APP_CONFIG, insumoService, medidaServi
 
 var depends = [
     '$scope',
+	 '$mdToast',
     'APP_CONFIG',
     'insumoService',
     'medidaService',
