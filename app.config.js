@@ -86,6 +86,9 @@
 			})
 			.state("cadastro-produto", {
 				  url: "/cadastro-produto",
+				  params: {
+		            idProd: null
+		        },
 				  views: {
 						"starterContent":{
 							 templateUrl: "produto/cadastro-produto.html"
@@ -117,7 +120,6 @@
 		angular.module('myApp').run(function ($rootScope, $state, $location, tokenService) {
 
 		    $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState) {
-
 		    	if(toState.name != 'login') {
 		    		if(!tokenService.hasToken()) {
 		    			$state.go('login');

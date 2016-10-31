@@ -1,15 +1,26 @@
 <div ng-controller="consultaProdutosController" class="ui basic segment" >
-	<h1>Produtos</h1>
+	<h1>{{headerMessage}}</h1>
 	<div class="ui grid" >
 		<div class="sixteen wide mobile eight wide computer eight wide tablet column" >
 			 <div ng-class="{ 'loading' : tabelaProdutoLoading }"
 			 	class="ui raised segment">
+					<div class="text-align-right">
+							<a ui-sref="cadastro-produto"
+								data-tooltip="Adicionar Produto"
+								data-position="top center"
+								data-inverted="">
+								<md-icon ng-style="{color: 'green'}">add_box</md-icon>
+							</a>
+					</div>
+
 					<table class="ui selectable celled striped table font-12">
 						<thead>
 							<tr>
-								<th>ID</th>
-								<th>Nome</th>
-								<th></th>
+								<th class="two wide">ID</th>
+								<th class="eight wide">Nome</th>
+								<th class="two wide">Status</th>
+								<th class="two wide text-align-center">Ativo?</th>
+								<th class="two wide text-align-center">Editar</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -23,19 +34,21 @@
 								ng-repeat="produto in produtosPage.content">
 								<td>{{produto.idProduto}}</td>
 								<td>{{produto.nome}}</td>
-								<td>
-									<div class="ui right aligned grid" >
-										<div class="sixteen wide column" >
-											<a	href=""
-												ng-click="setProdutoExclusao(produto)"
-												modal-confirmacao-opener
-												target-modal-id="'#modalConfirmacao'"
-												data-tooltip="Excluir"
-												data-position="left center"
-												class="ui float-right btnExcluir">
-												<i class="material-icons md-red" >cancel</i>
-											</a>
-										</div>
+								<td>{{produto.status.descricao}}</td>
+								<td class="text-align-center" >
+									<md-checkbox aria-label="Checkbox No Ink"
+										ng-click="toggleStatus($index)"
+										ng-checked="produto.status.descricao == 'Ativo'"
+										class="md-primary m-a-10">
+									</md-checkbox>
+								</td>
+								<td class="text-align-center">
+										<a ui-sref="cadastro-produto({idProd: {{produto.idProduto}}})"
+											data-tooltip="Editar"
+											data-position="right center"
+											data-inverted="">
+											<md-icon ng-style="{color: 'green'}">border_color</md-icon>
+										</a>
 									</div>
 								</td>
 							</tr>

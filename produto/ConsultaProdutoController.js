@@ -4,8 +4,15 @@ function consultaProdutosController($scope, $mdToast, APP_CONFIG ,produtoService
 
 	$scope.pageSize = APP_CONFIG.DEFAULT_PAGE_SIZE;
 
-	$scope.formProdutoLoading = false;
 	$scope.tabelaProdutoLoading = true;
+
+	var stopTabelaLoading = function() {
+		$scope.tabelaProdutoLoading = false;
+	}
+
+	var startTabelaLoading = function() {
+		$scope.tabelaProdutoLoading = true;
+	}
 
 	$scope.produto = {};
 
@@ -15,36 +22,32 @@ function consultaProdutosController($scope, $mdToast, APP_CONFIG ,produtoService
 	}
 
 	$scope.findAllProductsPage = function(page) {
-			$scope.tabelaProdutoLoading = true;
+			startTabelaLoading();
 			$promisePage = produtoService.findAllPage(page, $scope.pageSize);
 			$promisePage.success(function(data) {
 				$scope.produtosPage = data;
-				$scope.tabelaProdutoLoading = false;
+				stopTabelaLoading();
 			}).error(function(data){
-				$scope.tabelaProdutoLoading = false;
+				stopTabelaLoading();
 			});
 
 	}
 
-	$scope.save = function() {
-		$scope.formProdutoLoading = true;
-		$promiseSave = produtoService.save($scope.produto);
-
-		$promiseSave.success(function(data) {
-				$scope.formProdutoLoading = false;
-				$scope.findAllProductsPage($scope.produtosPage.number);
-				$scope.error = null;
-			})
-			.error(function(data){
-				$scope.error = data;
-				$scope.formProdutoLoading = false;
+	$scope.toggleStatus = function(indexProd) {
+			startTabelaLoading();
+			var idProd = $scope.produtosPage.content[indexProd].idProduto;
+			$promisePage = produtoService.toggleStatus(idProd);
+			$promisePage.success(function(data) {
+				$scope.produtosPage.content[indexProd] = data.obj;
+				stopTabelaLoading();
+			}).error(function(data){
+				stopTabelaLoading();
 			});
-		$scope.findAllProductsPage($scope.produtosPage.number);
-		$scope.produto = {};
+			stopTabelaLoading();
 	}
 
 	$scope.del = function() {
-		$scope.tabelaProdutoLoading = true;
+		startTabelaLoading();
 		$promiseDelete = produtoService.del($scope.produtoExclusao);
 		$promiseDelete
 			.success(function(data) {
@@ -96,7 +99,7 @@ function consultaProdutosController($scope, $mdToast, APP_CONFIG ,produtoService
 
 	$promisePage.success(function(data) {
 		$scope.produtosPage = data;
-		$scope.tabelaProdutoLoading = false;
+		stopTabelaLoading();
 	});
 
 	$scope.getPages = function(num) {

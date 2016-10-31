@@ -1,5 +1,5 @@
 <div class="item">
-	<a class="header menu menuItem" ui-sref="home" >
+	<a ng-class="{'menuSelected': isCurrentState('home')}" class="header menu menuItem" ui-sref="home" >
 		<i class="home large blue icon"></i>
 		Home
 	</a>
@@ -10,14 +10,14 @@
 		Fornecedor
 	</div>
 	<div class="menu">
-		<a class="item menuItem" ui-sref="cadastro-fornecedor" >
+		<a ng-class="{'menuSelected': isCurrentState('cadastro-fornecedor')}" class="item menuItem" ui-sref="cadastro-fornecedor" >
 			<div>
 				<i class="blue large angle double right icon"></i>
 				Cadastrar
 				<i style="position: relative; float: right" class="material-icons md-18">add_box</i>
 			</div>
 		</a>
-		<a class="item menuItem" ui-sref="consulta-fornecedor" >
+		<a ng-class="{'menuSelected': isCurrentState('consulta-fornecedor')}" class="item menuItem" ui-sref="consulta-fornecedor" >
 			<div>
 				<i class="blue large angle double right icon"></i>
 				Consultar
@@ -32,14 +32,14 @@
 		Insumos
 	</div>
 	<div class="menu">
-		<a class="item menuItem" ui-sref="cadastro-insumo" >
+		<a ng-class="{'menuSelected': isCurrentState('cadastro-insumo')}" class="item menuItem" ui-sref="cadastro-insumo" >
 			<div>
 				<i class="blue large angle double right icon"></i>
 				Cadastrar
 				<i style="position: relative; float: right" class="material-icons md-18">add_box</i>
 			</div>
 		</a>
-		<a class="item menuItem" ui-sref="consulta-insumos">
+		<a ng-class="{'menuSelected': isCurrentState('consulta-insumos')}" class="item menuItem" ui-sref="consulta-insumos">
 			<div>
 				<i class="blue large angle double right icon"></i>
 				Consultar
@@ -54,14 +54,14 @@
 		Produtos
 	</div>
 	<div class="menu">
-		<a class="item menuItem" ui-sref="cadastro-produto">
+		<a ng-class="{'menuSelected': isCurrentState('cadastro-produto')}" class="item menuItem" ui-sref="cadastro-produto">
 			<div>
 				<i class="blue large angle double right icon"></i>
 				Cadastrar
 				<i style="position: relative; float: right" class="material-icons md-18">add_box</i>
 			</div>
 		</a>
-		<a class="item menuItem" ui-sref="consulta-produtos" >
+		<a ng-class="{'menuSelected': isCurrentState('consulta-produtos')}" class="item menuItem" ui-sref="consulta-produtos" >
 			<div>
 				<i class="blue large angle double right icon"></i>
 				Consultar
@@ -75,11 +75,6 @@
 	$(document).ready(function(){
 
 		/* MENU */
-
-		$('.menuItem').click(function(){
-			$('.menuItem').removeClass("menuSelected");
-			$(this).toggleClass("menuSelected");
-		});
 
 		var speed = 100;
 		$('.menuItem').hover(function(){

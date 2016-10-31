@@ -54,6 +54,14 @@
 
   					<div class="ui hidden divider"></div>
   					<div class="ui divider"></div>
+					<div class="text-align-right">
+							<a ui-sref="cadastro-insumo"
+								data-tooltip="Adicionar Insumo"
+								data-position="top center"
+								data-inverted="">
+								<md-icon ng-style="{color: 'green'}">add_box</md-icon>
+							</a>
+					</div>
 					<table class="ui selectable celled table">
 						<thead>
 							<tr>
@@ -87,8 +95,9 @@
 												modal-confirmacao-opener
 												target-modal-id="'#modalConfirmacao'"
 												data-tooltip="Excluir"
-												data-position="left center"
-												class="ui float-right btnExcluir">
+												data-position="right center"
+												class="ui float-right btnExcluir"
+												data-inverted="">
 												<i class="material-icons md-red" >cancel</i>
 											</a>
 										</div>

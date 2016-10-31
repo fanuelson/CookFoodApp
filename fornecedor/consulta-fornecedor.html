@@ -42,6 +42,14 @@
 
   					<div class="ui hidden divider"></div>
   					<div class="ui divider"></div>
+					<div class="text-align-right">
+							<a ui-sref="cadastro-fornecedor"
+								data-tooltip="Adicionar Fornecedor"
+								data-position="top center"
+								data-inverted="">
+								<md-icon ng-style="{color: 'green'}">add_box</md-icon>
+							</a>
+					</div>
 					<table class="ui selectable celled striped sortable table">
 						<thead>
 							<tr>
@@ -88,7 +96,9 @@
 												target-modal-id="'#modalConfirmacao'"
 												data-tooltip="Excluir"
 												data-position="left center"
-												class="ui float-right btnExcluir">
+												class="ui float-right btnExcluir"
+												data-position="right center"
+												data-inverted="">
 												<i class="material-icons md-red" >cancel</i>
 											</a>
 										</div>

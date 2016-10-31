@@ -1,6 +1,6 @@
 (function() {
 
-	function cadastroProdutoController($scope, APP_CONFIG ,produtoService, insumoService) {
+	function cadastroProdutoController($scope, APP_CONFIG, $stateParams, produtoService, insumoService) {
 
 		$scope.headerMessage = "Cadastro de Produto";
 
@@ -12,8 +12,29 @@
 		$scope.produto.composicoes = [];
 		$scope.composicao = {};
 
+		$scope.findOneParam = function() {
+			if($stateParams.idProd) {
+				$promiseFindOne = produtoService.findOne($stateParams.idProd);
+				$promiseFindOne
+				.success(function(res){
+					$scope.produto = res.obj;
+					angular.forEach($scope.produto.composicoes, function(composicao, index){
+						composicao.insumo.medida = composicao.insumo.medida.abreviacao;
+					});
+				})
+				.error(function(res){
+					console.log(res);
+				});
+			}else{
+				$scope.produto.status = 'A';
+			}
+		}
+
+		$scope.findOneParam();
+
 		$scope.save = function() {
 			$scope.formProdutoLoading = true;
+			$scope.produto.status = $scope.produto.status.id;
 			var produtoJson = angular.toJson($scope.produto);
 			$promiseSave = produtoService.save(produtoJson);
 			$promiseSave.success(function(data) {
@@ -124,11 +145,12 @@
 	var depends = [
 		'$scope',
 		'APP_CONFIG',
+		'$stateParams',
 		'produtoService',
 		'insumoService',
 		cadastroProdutoController
 	]
 
 	angular.module('myApp').controller('cadastroProdutoController', depends);
-	
+
 })();

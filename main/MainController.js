@@ -10,6 +10,10 @@ function mainController($scope, $state, APP_CONFIG, tokenService) {
 		$state.go('login');
 	}
 
+	$scope.isCurrentState = function(_state) {
+		return $state.current.name == _state;
+	}
+
 	$scope.updateIsLoggedIn = function() {
 		$scope.userLogged.isLoggedIn = tokenService.getToken() ? true : false;
 	}

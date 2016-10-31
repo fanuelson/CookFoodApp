@@ -7,6 +7,14 @@ function produtoService($http, APP_CONFIG) {
 		return $http.get(rest_url + '/produtos/page' + pageParams);
 	};
 
+	this.findOne = function(idProd) {
+		return $http.get(rest_url + '/produtos/' + idProd);
+	};
+
+	this.toggleStatus = function(idProduto) {
+		return $http.get(rest_url + '/produtos/'+idProduto+'/toggleStatus');
+	};
+
 	this.save = function(produto) {
 		return $http.post(rest_url + '/produtos', produto);
 	};

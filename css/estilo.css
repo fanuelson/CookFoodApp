@@ -17,10 +17,6 @@
 
 /* END LOGIN PAGE */
 
-#appContent {
-	background: none;
-}
-
 /* MENU */
 .menuSelected {
 	background-color: yellow!important;
@@ -80,7 +76,7 @@
 }
 
 .text-align-center {
-	text-align: center;
+	text-align: center !important;
 }
 
 .input-search {

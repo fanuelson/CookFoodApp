@@ -1,26 +1,27 @@
-<div ng-controller="loginController" >
-	
-	<div ng-if="!userLogged.isLoggedIn" class="ui one column center aligned grid">
-	  <div class="column four wide computer six wide tablet fourteen wide mobile form-holder">
-	    <h2 class="center aligned header form-head">Login</h2>
-	    <div class="ui form">
-	      <div class="field">
-	        <input type="text" placeholder="login" ng-model="user.login">
-	      </div>
-	      <div class="field">
-	        <input type="password" placeholder="senha" ng-model="user.senha">
-	      </div>
-	      <div class="field">
-	        <input type="submit" value="Login" class="ui button large fluid green" ng-click="login()">
-	      </div>
-	      <div class="inline field">
-	      </div>
-	    </div>
-		<div ng-show="mensagemErro" class="ui negative message">
-		  <p>{{mensagemErro}}</p>
+<div layout="row" layout-align="center center" layout-padding ng-controller="loginController" >
+	<md-card ng-if="!userLogged.isLoggedIn" flex-xs="100" flex-sm="40" flex-md="30" flex-lg="30" flex-gt-lg="30" layout-padding>
+		<div layout="row" layout-align="center">
+			<md-input-container class="md-block" flex="80" >
+				<label>Login</label>
+				<input ng-model="user.login" >
+			</md-input-container>
 		</div>
-	  </div>
-	  
-	</div>
-	
+		<div layout="row" layout-align="center">
+			<md-input-container class="md-block" flex="80">
+				<label>Senha</label>
+				<input type="password" ng-model="user.senha">
+			</md-input-container>
+		</div>
+		<section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
+			<md-button class="md-raised">Register</md-button>
+			<md-button class="md-raised md-primary" ng-click="login()">
+				Login
+			</md-button>
+		</section>
+		<section layout="row">
+			<div ng-show="mensagemErro" class="ui negative message">
+				<p>{{mensagemErro}}</p>
+			</div>
+		</section>
+	</md-card>
 </div>
