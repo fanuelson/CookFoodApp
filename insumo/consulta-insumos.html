@@ -71,6 +71,7 @@
 								<th>Quantidade</th>
 								<th>Medida</th>
 								<th>Acões</th>
+								<th>Editar</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -101,6 +102,15 @@
 												<i class="material-icons md-red" >cancel</i>
 											</a>
 										</div>
+									</div>
+								</td>
+								<td class="text-align-center">
+										<a ui-sref="cadastro-insumo({idInsumo: {{insumo.id}}})"
+											data-tooltip="Editar"
+											data-position="right center"
+											data-inverted="">
+											<md-icon class="md-orange">border_color</md-icon>
+										</a>
 									</div>
 								</td>
 							</tr>

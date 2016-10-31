@@ -70,6 +70,9 @@
 			})
 			.state("cadastro-insumo", {
 				  url: "/cadastro-insumo",
+				  params: {
+		            idInsumo: null
+		        },
 				  views: {
 						"starterContent":{
 						 templateUrl: "insumo/cadastro-insumo.html"

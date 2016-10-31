@@ -6,6 +6,10 @@ function insumoService($http, APP_CONFIG) {
 		return $http.get(rest_url + '/insumos');
 	};
 
+	this.findOne = function(idInsumo) {
+		return $http.get(rest_url + '/insumos/' + idInsumo);
+	};
+
 	this.findAllPage = function(page, size) {
 		var pageParams = "?page="+page+"&size="+size;
 		return $http.get(rest_url + '/insumos/page' + pageParams);

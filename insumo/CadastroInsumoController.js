@@ -1,4 +1,22 @@
-function cadastroInsumoController($scope, APP_CONFIG, insumoService, medidaService) {
+function cadastroInsumoController($scope, APP_CONFIG, $stateParams, insumoService, medidaService) {
+
+	console.log($stateParams.idInsumo);
+
+	$scope.findOneParam = function() {
+		if($stateParams.idInsumo) {
+			$promiseFindOne = insumoService.findOne($stateParams.idInsumo);
+			$promiseFindOne
+			.success(function(res){
+				$scope.insumo = res.obj;
+				$scope.insumo.medida = $scope.insumo.medida.abreviacao;
+			})
+			.error(function(res){
+				console.log(res);
+			});
+		}
+	}
+
+	$scope.findOneParam();
 
 	$scope.headerMessage = "Cadastro de Insumo";
 
@@ -44,6 +62,10 @@ function cadastroInsumoController($scope, APP_CONFIG, insumoService, medidaServi
 		});
 	}
 
+	$scope.isMedidaSelected = function(abrev) {
+		return insumo.medida.abreviacao == abrev;
+	}
+
 	$scope.limparCampos = function() {
 		$scope.insumo = {};
 		$scope.error = {};
@@ -58,6 +80,7 @@ function cadastroInsumoController($scope, APP_CONFIG, insumoService, medidaServi
 var depends = [
     '$scope',
     'APP_CONFIG',
+	 '$stateParams',
     'insumoService',
     'medidaService',
 	cadastroInsumoController ]
