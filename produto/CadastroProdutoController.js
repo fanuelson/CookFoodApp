@@ -13,7 +13,6 @@
 		$scope.composicao = {};
 
 		$scope.findOneParam = function() {
-			if($stateParams.idProd) {
 				$promiseFindOne = produtoService.findOne($stateParams.idProd);
 				$promiseFindOne
 				.success(function(res){
@@ -25,16 +24,17 @@
 				.error(function(res){
 					console.log(res);
 				});
-			}else{
-				$scope.produto.status = 'A';
-			}
 		}
 
 		$scope.findOneParam();
 
 		$scope.save = function() {
 			$scope.formProdutoLoading = true;
-			$scope.produto.status = $scope.produto.status.id;
+			if($scope.produto.idProduto) {
+				$scope.produto.status = $scope.produto.status.id;
+			}else{
+				$scope.produto.status = 'A';
+			}
 			var produtoJson = angular.toJson($scope.produto);
 			$promiseSave = produtoService.save(produtoJson);
 			$promiseSave.success(function(data) {
