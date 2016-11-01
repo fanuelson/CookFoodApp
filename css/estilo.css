@@ -99,3 +99,6 @@
 .material-icons.md-yellow { color: #ffdf05 !important; }
 .material-icons.md-orange { color: orange !important; }
 .material-icons.md-green { color: #2ECC40 !important; }
+.material-icons.md-black { color: black !important; }
+
+.material-icons.md-bg-black { background: black !important; }

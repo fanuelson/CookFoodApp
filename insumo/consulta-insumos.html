@@ -89,18 +89,19 @@
 								<td>{{insumo.medida.abreviacao}} ({{insumo.medida.descricao}})</td>
 								<td>
 									<div>
-										<md-fab-speed-dial md-open="false" md-direction="up"
-											ng-class="'md-scale'"
+										<md-fab-speed-dial md-open="false"
+											md-direction="left"
+											class="md-scale"
 											style="height: 50px;">
 
 											<md-fab-trigger>
-												<md-button aria-label="menu" class="md-fab md-primary md-mini">
-													<md-icon >menu</md-icon>
+												<md-button aria-label="menu" class="md-icon-button md-primary md-mini">
+													<md-icon>menu</md-icon>
 												</md-button>
 											</md-fab-trigger>
 
-											<md-fab-actions>
-												<md-button aria-label="Facebook" class="md-fab md-raised md-mini">
+											<md-fab-actions style="position: absolute;right: 50px;">
+												<md-button aria-label="Facebook" class="md-fab md-raised md-mini md-whiteframe-25dp">
 													<a ui-sref="cadastro-insumo({idInsumo: {{insumo.id}}})">
 														<md-icon class="md-orange">border_color</md-icon>
 													</a>

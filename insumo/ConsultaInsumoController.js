@@ -73,7 +73,11 @@ function consultaInsumoController($scope, $mdToast, APP_CONFIG, insumoService, m
 				$scope.showSimpleToast(data.mensagem);
 			})
 			.error(function(data){
-				$scope.messageError = data.message;
+				var mensagem = "";
+				angular.forEach(data.validacoesRegraNegocio, function(value){
+					mensagem += value + "\n";
+				});
+				$scope.showSimpleToast(mensagem);
 			});
 	}
 
@@ -82,7 +86,7 @@ function consultaInsumoController($scope, $mdToast, APP_CONFIG, insumoService, m
 			$mdToast.simple()
 			.textContent(message)
 			.position('bottom right')
-			.hideDelay(3000)
+			.hideDelay(5000)
 		);
 	};
 
