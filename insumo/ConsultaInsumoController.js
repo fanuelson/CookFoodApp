@@ -53,7 +53,6 @@ function consultaInsumoController($scope, $mdToast, APP_CONFIG, insumoService, m
 	}
 
 	$scope.pesquisar = function() {
-		console.log($scope.filtroPesquisa);
 		$scope.findAllInsumosPageFilterBy();
 	}
 
@@ -66,7 +65,6 @@ function consultaInsumoController($scope, $mdToast, APP_CONFIG, insumoService, m
 	}
 
 	$scope.del = function() {
-		console.log(JSON.stringify($scope.insumoExclusao));
 		$scope.formInsumoLoading = true;
 		$promiseDelete = insumoService.del($scope.insumoExclusao.id);
 		$promiseDelete

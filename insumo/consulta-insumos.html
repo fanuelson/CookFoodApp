@@ -65,13 +65,12 @@
 					<table class="ui selectable celled table">
 						<thead>
 							<tr>
-								<th>ID</th>
-								<th>Nome</th>
-								<th>Descrição</th>
-								<th>Quantidade</th>
-								<th>Medida</th>
-								<th>Acões</th>
-								<th>Editar</th>
+								<th class="one wide">ID</th>
+								<th class="two wide">Nome</th>
+								<th class="eight wide">Descrição</th>
+								<th class="two wide">Quantidade</th>
+								<th class="two wide">Medida</th>
+								<th class="one wide">Opções</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -89,28 +88,34 @@
 								<td>{{insumo.quantidade | brDecimalNumber}}</td>
 								<td>{{insumo.medida.abreviacao}} ({{insumo.medida.descricao}})</td>
 								<td>
-									<div class="ui right aligned grid" >
-										<div class="sixteen wide column" >
-											<a	href=""
-												ng-click="setInsumoExclusao(insumo)"
-												modal-confirmacao-opener
-												target-modal-id="'#modalConfirmacao'"
-												data-tooltip="Excluir"
-												data-position="right center"
-												class="ui float-right btnExcluir"
-												data-inverted="">
-												<i class="material-icons md-red" >cancel</i>
-											</a>
-										</div>
-									</div>
-								</td>
-								<td class="text-align-center">
-										<a ui-sref="cadastro-insumo({idInsumo: {{insumo.id}}})"
-											data-tooltip="Editar"
-											data-position="right center"
-											data-inverted="">
-											<md-icon class="md-orange">border_color</md-icon>
-										</a>
+									<div>
+										<md-fab-speed-dial md-open="false" md-direction="up"
+											ng-class="'md-scale'"
+											style="height: 50px;">
+
+											<md-fab-trigger>
+												<md-button aria-label="menu" class="md-fab md-primary md-mini">
+													<md-icon >menu</md-icon>
+												</md-button>
+											</md-fab-trigger>
+
+											<md-fab-actions>
+												<md-button aria-label="Facebook" class="md-fab md-raised md-mini">
+													<a ui-sref="cadastro-insumo({idInsumo: {{insumo.id}}})">
+														<md-icon class="md-orange">border_color</md-icon>
+													</a>
+												</md-button>
+												<md-button class="md-fab md-raised md-mini">
+													<a	href=""
+													ng-click="setInsumoExclusao(insumo)"
+													modal-confirmacao-opener
+													target-modal-id="'#modalConfirmacao'"
+													class="ui btnExcluir">
+													<i class="material-icons md-red" >cancel</i>
+												</a>
+												</md-button>
+											</md-fab-actions>
+										</md-fab-speed-dial>
 									</div>
 								</td>
 							</tr>

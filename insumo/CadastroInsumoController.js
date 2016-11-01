@@ -2,6 +2,31 @@ function cadastroInsumoController($scope, APP_CONFIG, $stateParams, insumoServic
 
 	console.log($stateParams.idInsumo);
 
+
+
+	$scope.headerMessage = "Cadastro de Insumo";
+
+	$scope.formInsumoLoading = true;
+
+	$scope.insumo = {
+
+	};
+
+
+	$scope.findAllMedidas = function() {
+		$promiseFindAllMedida = medidaService.findAll();
+
+		$promiseFindAllMedida.success(function(data) {
+			$scope.medidas = data;
+			$scope.formInsumoLoading = false;
+		}).error(function(data) {
+			$scope.formInsumoLoading = false;
+
+		});
+	}
+
+	$scope.findAllMedidas();
+
 	$scope.findOneParam = function() {
 		if($stateParams.idInsumo) {
 			$promiseFindOne = insumoService.findOne($stateParams.idInsumo);
@@ -15,16 +40,7 @@ function cadastroInsumoController($scope, APP_CONFIG, $stateParams, insumoServic
 			});
 		}
 	}
-
 	$scope.findOneParam();
-
-	$scope.headerMessage = "Cadastro de Insumo";
-
-	$scope.formInsumoLoading = true;
-
-	$scope.insumo = {
-
-	};
 
 	$scope.insumoIsInvalid = function() {
 		return S($scope.insumo.nome).isEmpty()
@@ -50,17 +66,6 @@ function cadastroInsumoController($scope, APP_CONFIG, $stateParams, insumoServic
 		});
 	}
 
-	$scope.findAllMedidas = function() {
-		$promiseFindAllMedida = medidaService.findAll();
-
-		$promiseFindAllMedida.success(function(data) {
-			$scope.medidas = data;
-			$scope.formInsumoLoading = false;
-		}).error(function(data) {
-			$scope.formInsumoLoading = false;
-
-		});
-	}
 
 	$scope.isMedidaSelected = function(abrev) {
 		return insumo.medida.abreviacao == abrev;
@@ -74,7 +79,7 @@ function cadastroInsumoController($scope, APP_CONFIG, $stateParams, insumoServic
 		$scope.retornoSucesso = {};
 	}
 
-	$scope.findAllMedidas();
+
 }
 
 var depends = [
