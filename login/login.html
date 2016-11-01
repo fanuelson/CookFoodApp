@@ -1,27 +1,35 @@
 <div layout="row" layout-align="center center" layout-padding ng-controller="loginController" >
-	<md-card ng-if="!userLogged.isLoggedIn" flex-xs="100" flex-sm="40" flex-md="30" flex-lg="30" flex-gt-lg="30" layout-padding>
-		<div layout="row" layout-align="center">
-			<md-input-container class="md-block" flex="80" >
-				<label>Login</label>
-				<input ng-model="user.login" >
-			</md-input-container>
-		</div>
-		<div layout="row" layout-align="center">
-			<md-input-container class="md-block" flex="80">
-				<label>Senha</label>
-				<input type="password" ng-model="user.senha">
-			</md-input-container>
-		</div>
-		<section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
-			<md-button class="md-raised">Register</md-button>
-			<md-button class="md-raised md-primary" ng-click="login()">
-				Login
-			</md-button>
-		</section>
-		<section layout="row">
-			<div ng-show="mensagemErro" class="ui negative message">
-				<p>{{mensagemErro}}</p>
+	<md-card ng-if="!userLogged.isLoggedIn" flex-xs="100" flex-sm="40" flex-md="25" flex-lg="25" flex-gt-lg="25" layout-padding>
+		<md-content>
+			<div layout="row" layout-align="center" >
+				<img src="img/loginImg.png" alt="Cook Food" width="100px" height="100px"/>
 			</div>
-		</section>
+			<div layout="row" layout-align="center" >
+				<h2>Login</h2>
+			</div>
+			<div layout="row" layout-align="center" ng-show="mensagemErro" class="ui negative message">
+				<div >
+					{{mensagemErro}}
+				</div>
+			</div>
+			<div layout="row" layout-align="center" >
+				<md-input-container flex="80" >
+					<label>Login</label>
+					<input ng-model="user.login" >
+				</md-input-container>
+			</div>
+			<div layout="row" layout-align="center">
+				<md-input-container flex="80">
+					<label>Senha</label>
+					<input type="password" ng-model="user.senha">
+				</md-input-container>
+			</div>
+			<div layout="row" layout-align="center center" >
+				<md-button class="md-raised">Register</md-button>
+				<md-button class="md-raised md-primary" ng-click="login()">
+					Login
+				</md-button>
+			</div>
+		</md-content>
 	</md-card>
 </div>
