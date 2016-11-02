@@ -11,9 +11,11 @@
 	</div>
 	<div class="menu">
 		<a ng-class="{'menuSelected': isCurrentState('cadastro-fornecedor')}" class="item menuItem" ui-sref="cadastro-fornecedor" >
-			<div>
+			<div layout="row">
 				<i class="blue large angle double right icon"></i>
-				Cadastrar
+				<div flex layout-align="center" style="align-self: center">
+					Cadastrar
+				</div>
 				<i style="position: relative; float: right" class="material-icons md-18">add_box</i>
 			</div>
 		</a>
