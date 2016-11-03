@@ -1,8 +1,10 @@
 To Run
 
-npm install
-
 npm install -g gulp
+
+npm install -g bower
+
+npm install
 
 cd semantic
 
