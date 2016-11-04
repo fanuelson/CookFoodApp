@@ -8,6 +8,13 @@
 
 		$scope.formProdutoLoading = false;
 
+		var startFormLoading = function() {
+			$scope.formProdutoLoading = true;
+		}
+		var stopFormLoading = function() {
+			$scope.formProdutoLoading = false;
+		}
+
 		$scope.produto = {};
 		$scope.produto.composicoes = [];
 		$scope.composicao = {};
@@ -29,7 +36,7 @@
 		$scope.findOneParam();
 
 		$scope.save = function() {
-			$scope.formProdutoLoading = true;
+			startFormLoading();
 			if($scope.produto.idProduto) {
 				$scope.produto.status = $scope.produto.status.id;
 			}else{
@@ -39,7 +46,7 @@
 			$promiseSave = produtoService.save(produtoJson);
 			$promiseSave.success(function(data) {
 				$scope.retornoSucesso = data;
-				$scope.formProdutoLoading = false;
+				stopFormLoading();
 				$scope.produto = {};
 				$scope.produto.composicoes = [];
 				$scope.composicao = {};
@@ -47,7 +54,7 @@
 			})
 			.error(function(data){
 				$scope.error = data;
-				$scope.formProdutoLoading = false;
+				stopFormLoading();
 			});
 		}
 
