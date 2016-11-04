@@ -10,17 +10,25 @@ function consultaInsumoController($scope, $mdToast, APP_CONFIG, insumoService, m
 
 	$scope.insumoExclusao = {};
 
+	var startTabelaLoading = function() {
+		$scope.tabelaInsumosLoading = true;
+	}
+
+	var stopTabelaLoading = function() {
+		$scope.tabelaInsumosLoading = false;
+	}
+
 	$scope.findAllInsumosPage = function(page) {
 		if(page == $scope.insumosPage.totalPages) {
 			return;
 		}
-		$scope.tabelaInsumosLoading = true;
+		startTabelaLoading();
 		$promisePage = insumoService.findAllPage(page, $scope.pageSize);
 		$promisePage.success(function(data) {
 			$scope.insumosPage = data;
-			$scope.tabelaInsumosLoading = false;
+			stopTabelaLoading();
 		}).error(function(data){
-			$scope.tabelaInsumosLoading = false;
+			stopTabelaLoading();
 		});
 
 	}
@@ -30,12 +38,13 @@ function consultaInsumoController($scope, $mdToast, APP_CONFIG, insumoService, m
 			return;
 		}
 		$scope.tabelaInsumosLoading = true;
+		startTabelaLoading();
 		$promisePage = insumoService.findAllPageFilterBy($scope.filtroPesquisa, page, $scope.pageSize);
 		$promisePage.success(function(data) {
 			$scope.insumosPage = data;
-			$scope.tabelaInsumosLoading = false;
+			stopTabelaLoading();
 		}).error(function(data){
-			$scope.tabelaInsumosLoading = false;
+			stopTabelaLoading();
 		});
 
 	}
@@ -45,10 +54,9 @@ function consultaInsumoController($scope, $mdToast, APP_CONFIG, insumoService, m
 
 		$promiseFindAllMedida.success(function(data) {
 			$scope.medidas = data;
-			$scope.formInsumoLoading = false;
+			stopTabelaLoading();
 		}).error(function(data) {
-			$scope.formInsumoLoading = false;
-
+			stopTabelaLoading();
 		});
 	}
 
@@ -65,7 +73,7 @@ function consultaInsumoController($scope, $mdToast, APP_CONFIG, insumoService, m
 	}
 
 	$scope.del = function() {
-		$scope.formInsumoLoading = true;
+		startTabelaLoading();
 		$promiseDelete = insumoService.del($scope.insumoExclusao.id);
 		$promiseDelete
 			.success(function(data) {
