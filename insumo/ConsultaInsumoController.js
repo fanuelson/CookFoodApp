@@ -86,6 +86,7 @@ function consultaInsumoController($scope, $mdToast, APP_CONFIG, insumoService, m
 					mensagem += value + "\n";
 				});
 				$scope.showSimpleToast(mensagem);
+				stopTabelaLoading();
 			});
 	}
 
