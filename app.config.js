@@ -52,6 +52,14 @@
 					 }
 			  }
 			})
+			.state("gerenciador-pdv", {
+			  url: "/gerenciador-pdv",
+			  views: {
+				  "starterContent":{
+					  templateUrl: "pdv/gerenciar-pdv.html"
+				  }
+			  }
+			})
 			.state("cadastro-fornecedor", {
 			  url: "/cadastro-fornecedor",
 			  views: {
