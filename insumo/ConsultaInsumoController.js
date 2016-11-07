@@ -1,4 +1,4 @@
-function consultaInsumoController($scope, $mdToast, APP_CONFIG, insumoService, medidaService) {
+function consultaInsumoController($scope, $mdToast, APP_CONFIG, insumoService, medidaService, FileSaver, Blob) {
 
 	$scope.headerMessage = "Consulta Insumos";
 
@@ -107,6 +107,17 @@ function consultaInsumoController($scope, $mdToast, APP_CONFIG, insumoService, m
 		$scope.pageSize = pageSize;
 	}
 
+	$scope.downloadFile = function() {
+
+		$promiseDownload = insumoService.downloadReport();
+		$promiseDownload.success(function(res){
+			var data = new Blob([res], { type: 'application/pdf;charset=utf-8' });
+			FileSaver.saveAs(data, 'testando.pdf');
+		}).error(function(res){
+			$scope.showSimpleToast("Erro ao fazer download do arquivo");
+		});
+	}
+
 	$scope.findAllMedidas();
 
 	$scope.findAllInsumosPage(0);
@@ -119,6 +130,8 @@ var depends = [
     'APP_CONFIG',
     'insumoService',
     'medidaService',
+	 'FileSaver',
+	 'Blob',
     consultaInsumoController ]
 
 angular.module('myApp').controller('consultaInsumoController', depends);

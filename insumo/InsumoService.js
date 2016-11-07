@@ -28,6 +28,10 @@ function insumoService($http, APP_CONFIG) {
 		return $http.delete(rest_url + '/insumos/' + idInsumo);
 	};
 
+	this.downloadReport = function() {
+		return $http.get(rest_url + '/pdf/test', { responseType: 'arraybuffer' });
+	};
+
 };
 
 var depends = [

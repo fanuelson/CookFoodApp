@@ -13,6 +13,7 @@
     "angular-animate": "^1.5.8",
     "angular-aria": "^1.5.8",
     "angular-br-filters": "^0.6.0",
+    "angular-file-saver": "^1.1.2",
     "angular-i18n": "^1.5.8",
     "angular-input-masks": "^2.5.0",
     "angular-material": "^1.1.1",

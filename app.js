@@ -5,7 +5,8 @@
       'ui.router',
       'ngMaterial',
       'ui.utils.masks',
-      'idf.br-filters'
+      'idf.br-filters',
+      'ngFileSaver'
    ];
    angular.module('myApp', depends);
 
