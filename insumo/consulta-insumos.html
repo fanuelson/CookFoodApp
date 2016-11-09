@@ -132,10 +132,10 @@
 
 								        <a ng-repeat="pagina in getPages(insumosPage.totalPages) track by $index"
 								        	ng-click="findAllInsumosPage($index)"
-								        	ng-class=" $index == produtosPage.number ? 'active' : ''"
+								        	ng-class="$index == produtosPage.number ? 'active' : ''"
 								        	class="item">
-												{{$index + 1}}
-										</a>
+													{{$index + 1}}
+											</a>
 
 										<a ng-click="findAllInsumosPage(insumosPage.number+1)" class="icon item">
 											<i class="right chevron icon"></i>
@@ -146,10 +146,11 @@
 							</tr>
 						</tfoot>
 					</table>
-					<div class="ui grid" >
-						<div class="sixteen wide column" >
-							<a href="" ng-click="downloadFile()" >
-								<img class="ui mini image" style="float: right"  src="img/pdfIcon.png">
+					<div flex>
+						<div layout-align="end center" layout="row" >
+							<a ng-disabled="true" href="" ng-click="downloadFile()" >
+								<md-progress-circular ng-if="pdfLoading" md-diameter="26"></md-progress-circular>
+								<img ng-if="!pdfLoading" class="ui mini image"  src="img/pdfIcon.png">
 							</a>
 						</div>
 					</div>

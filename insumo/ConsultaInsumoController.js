@@ -10,6 +10,16 @@ function consultaInsumoController($scope, $mdToast, APP_CONFIG, insumoService, m
 
 	$scope.insumoExclusao = {};
 
+	$scope.pdfLoading = false;
+
+	var startPdfLoading = function() {
+		$scope.pdfLoading = true;
+	}
+
+	var stopPdfLoading = function() {
+		$scope.pdfLoading = false;
+	}
+
 	var startTabelaLoading = function() {
 		$scope.tabelaInsumosLoading = true;
 	}
@@ -108,13 +118,15 @@ function consultaInsumoController($scope, $mdToast, APP_CONFIG, insumoService, m
 	}
 
 	$scope.downloadFile = function() {
-
+		startPdfLoading();
 		$promiseDownload = insumoService.downloadReport();
 		$promiseDownload.success(function(res){
 			var data = new Blob([res], { type: 'application/pdf;charset=utf-8' });
-			FileSaver.saveAs(data, 'testando.pdf');
+			FileSaver.saveAs(data, 'relatorio_de_insumos.pdf');
+			stopPdfLoading();
 		}).error(function(res){
 			$scope.showSimpleToast("Erro ao fazer download do arquivo");
+			stopPdfLoading();
 		});
 	}
 
