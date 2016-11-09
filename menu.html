@@ -24,6 +24,23 @@
 <div class="item">
 	<div class="header cursor-pointer" menu-toggle-down>
 		<i class="large caret up yellow icon"></i>
+		Caixa
+	</div>
+	<div class="menu">
+		<a ng-class="{'menuSelected': isCurrentState('caixa')}" class="item menuItem" ui-sref="caixa" >
+			<div layout="row">
+				<i class="blue large angle double right icon"></i>
+				<div flex layout-align="center" style="align-self: center">
+					Gerenciar
+				</div>
+				<i style="position: relative; float: right" class="material-icons md-18">shopping_cart</i>
+			</div>
+		</a>
+	</div>
+</div>
+<div class="item">
+	<div class="header cursor-pointer" menu-toggle-down>
+		<i class="large caret up yellow icon"></i>
 		Fornecedor
 	</div>
 	<div class="menu">

@@ -43,7 +43,12 @@
 		<div class="pusher">
 			<div class="ui basic segment">
 				<div ui-view="starterContent" >
-						Carregando...
+               <div layout="row">
+                  Carregando...
+                  <span>
+                     <md-progress-circular md-diameter="16"></md-progress-circular>
+                  </span>
+               </div>
 				</div>
 			</div>
 		</div>
@@ -127,6 +132,8 @@
    	<script src="fornecedor/CadastroFornecedorController.js"></script>
    	<script src="fornecedor/ConsultaFornecedorController.js"></script>
    	<script src="pdv/GerenciadorPdvController.js"></script>
+   	<script src="calculadoraCedula/CalculadoraCedulaController.js"></script>
+      <script src="caixa/CaixaController.js"></script>
 
    <!-- INTERCEPTOR -->
       <script src="auth/TokenInterceptor.js"></script>

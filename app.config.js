@@ -60,6 +60,22 @@
 				  }
 			  }
 			})
+			.state("caixa", {
+			  url: "/caixa",
+			  views: {
+				  "starterContent":{
+					  templateUrl: "caixa/caixa.html"
+				  }
+			  }
+			})
+			.state("calculadora-cedula", {
+			  url: "/calculadora-cedula",
+			  views: {
+				  "starterContent":{
+					  templateUrl: "calculadoraCedula/calculadoraCedula.html"
+				  }
+			  }
+			})
 			.state("cadastro-fornecedor", {
 			  url: "/cadastro-fornecedor",
 			  views: {

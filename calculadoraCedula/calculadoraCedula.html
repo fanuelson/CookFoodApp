@@ -1,0 +1,51 @@
+<md-card ng-controller="calculadoraCedulaController">
+   <md-card-content>
+      <div layout layout-align="center center" layout-padding>
+         <h2>Calculadora de Cédula</h2>
+      </div>
+      <md-divider ></md-divider>
+      <div layout layout-align="center center" layout-padding>
+         <table>
+            <thead>
+               <tr>
+                  <th>
+                     Valor da Cédula
+                  </th>
+                  <th>
+                     Quantidade
+                  </th>
+                  <th>
+                     Soma
+                  </th>
+               </tr>
+            </thead>
+            <tbody>
+               <tr ng-repeat="model in calcModel track by model.cedula">
+                  <td>
+                     <label >{{model.cedula | finance:true:2}}</label>
+                  </td>
+                  <td>
+                     <md-input-container style="bottom: 12px; height: 15px;">
+                        <input type="text" ng-model="model.quantidade" ui-number-mask="0">
+                     </md-input-container>
+                  </td>
+                  <td>
+                     <label >{{model.soma() | finance:true:2}}</label>
+                  </td>
+               </tr>
+            </tbody>
+            <tfoot>
+               <tr>
+                  <td>
+                     <label>Total</label>
+                  </td>
+                  <td layout layout-align="center center">--</td>
+                  <td>
+                     <label>{{somaTotal() | finance:true:2}}</label>
+                  </td>
+               </tr>
+            </tfoot>
+         </table>
+      </div>
+   </md-card-content>
+</md-card>
