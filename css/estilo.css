@@ -1,3 +1,9 @@
+
+/* APP CSS */
+.app-green { color: #2ECC40 !important; }
+.app-red { color: #FF695E !important; }
+.app-icon-red { color: #DB2828 !important; }
+
 /* GERENCIADOR PDV*/
 
 .comandas md-whiteframe {

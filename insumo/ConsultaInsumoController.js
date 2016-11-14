@@ -88,14 +88,14 @@ function consultaInsumoController($scope, $mdToast, APP_CONFIG, insumoService, m
 		$promiseDelete
 			.success(function(data) {
 				$scope.findAllInsumosPageFilterBy($scope.page);
-				$scope.showSimpleToast(data.mensagem);
+				showSuccessToast(data.mensagem);
 			})
 			.error(function(data){
 				var mensagem = "";
 				angular.forEach(data.validacoesRegraNegocio, function(value){
 					mensagem += value + "\n";
 				});
-				$scope.showSimpleToast(mensagem);
+				showErrorToast(mensagem);
 				stopTabelaLoading();
 			});
 	}
@@ -125,7 +125,7 @@ function consultaInsumoController($scope, $mdToast, APP_CONFIG, insumoService, m
 			FileSaver.saveAs(data, 'relatorio_de_insumos.pdf');
 			stopPdfLoading();
 		}).error(function(res){
-			$scope.showSimpleToast("Erro ao fazer download do arquivo");
+			showErrorToast("Erro ao fazer download do arquivo");
 			stopPdfLoading();
 		});
 	}
@@ -133,6 +133,26 @@ function consultaInsumoController($scope, $mdToast, APP_CONFIG, insumoService, m
 	$scope.findAllMedidas();
 
 	$scope.findAllInsumosPage(0);
+
+	var showSuccessToast = function(mensagem) {
+		$mdToast.show({
+			hideDelay   : 5000,
+			position    : 'bottom right',
+			controller  : 'successToastController',
+			templateUrl : '/toasts/successToast.html',
+			msgSuccess: mensagem
+		});
+	}
+
+	var showErrorToast = function(mensagem) {
+		$mdToast.show({
+			hideDelay   : 5000,
+			position    : 'bottom right',
+			controller  : 'errorToastController',
+			templateUrl : '/toasts/errorToast.html',
+			msgErro: mensagem
+		});
+	}
 
 }
 
