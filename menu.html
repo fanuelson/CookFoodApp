@@ -1,3 +1,13 @@
+<md-sidenav
+	class="md-sidenav-left"
+	md-component-id="sideBarMenu"
+	md-is-locked-open="$mdMedia('gt-md')"
+	md-whiteframe="4"
+	style="width: 270px;
+    min-width: 270px;
+    max-width: 270px;">
+
+<md-content layout-margin>
 <div class="item">
 	<a ng-class="{'menuSelected': isCurrentState('home')}" class="header menu menuItem" ui-sref="home" >
 		<i class="home large blue icon"></i>
@@ -106,7 +116,8 @@
 		</a>
 	</div>
 </div>
-
+</md-content>
+</md-sidenav>
 <script>
 	$(document).ready(function(){
 

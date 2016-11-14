@@ -17,44 +17,35 @@
    <link rel="stylesheet" type="text/css" href="css/estilo.css"></link>
 </head>
 
-<body ng-controller="mainController" ng-cloak>
+<body ng-controller="mainController" layout="row" ng-cloak>
 
-   <header>
-		<div ng-if="userLogged.isLoggedIn" class="ui top attached inverted menu">
-			<a id="menuOpener" class="item" menu-toggle>
-		    	<i class="sidebar icon"></i>
-		    	Menu
-		    </a>
+   <!-- MENU -->
+   <div  ng-include="'menu.html'" ></div>
 
-			<div class="right menu">
-				<a ng-click="logout()" class="active red item"> Logout </a>
-			</div>
-		</div>
-	</header>
+   <div layout="column" flex>
 
-	<div class="ui bottom attached segment pushable" style="height: auto">
+      <header>
+         <div ng-if="userLogged.isLoggedIn" class="ui top attached inverted menu">
 
-		<!-- MENU -->
-		<div ng-if="userLogged.isLoggedIn" class="ui visible inverted labeled left inline vertical sidebar menu">
-			<div  ng-include="'menu.html'" ></div>
-		</div>
+            <div class="right menu">
+               <a ng-click="logout()" class="active red item"> Logout </a>
+            </div>
+         </div>
+      </header>
 
-		<!-- CONTENT -->
-		<div class="pusher">
-			<div>
-				<div ui-view="starterContent" >
-               <div layout="row">
-                  Carregando...
-                  <span>
-                     <md-progress-circular md-diameter="16"></md-progress-circular>
-                  </span>
-               </div>
-				</div>
-			</div>
-		</div>
-	</div>
 
-	<div ng-include="'footer.html'"></div>
+
+      <!-- CONTENT -->
+      <div ui-view="starterContent" layout="column" layout-padding layout-wrap flex>
+         <div layout="row">
+            Carregando...
+            <span>
+               <md-progress-circular md-diameter="16"></md-progress-circular>
+            </span>
+         </div>
+      </div>
+   </div>
+
 
    <!-- JQUERY -->
       <script src="node_modules/jquery/dist/jquery.min.js"></script>
