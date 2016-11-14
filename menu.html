@@ -3,134 +3,133 @@
 	md-component-id="sideBarMenu"
 	md-is-locked-open="$mdMedia('gt-md')"
 	md-whiteframe="4"
-	style="width: 270px;
-    min-width: 270px;
-    max-width: 270px;">
+	style="width: 275px;
+    min-width: 275px;
+    max-width: 275px;">
 
-<md-content layout-margin>
-<div class="item">
-	<a ng-class="{'menuSelected': isCurrentState('home')}" class="header menu menuItem" ui-sref="home" >
-		<i class="home large blue icon"></i>
-		Home
-	</a>
-</div>
-<div class="item">
-	<div class="header cursor-pointer" menu-toggle-down>
-		<i class="large caret up yellow icon"></i>
-		PDV
-	</div>
-	<div class="menu">
-		<a ng-class="{'menuSelected': isCurrentState('gerenciador-pdv')}" class="item menuItem" ui-sref="gerenciador-pdv" >
-			<div layout="row">
-				<i class="blue large angle double right icon"></i>
-				<div flex layout-align="center" style="align-self: center">
-					Gerenciar
+	<md-toolbar style="background: black;">
+		<h1 class="md-toolbar-tools">App</h1>
+	</md-toolbar>
+
+	<md-content layout-margin>
+
+		<div class="menu-block">
+			<div
+				layout
+				layout-align="start end"
+				ng-class="{'menuSelected': isCurrentState('home')}"
+				class="header"
+				ui-sref="home" >
+				<i class="home large blue icon"></i>
+				Home
+			</div>
+		</div>
+
+		<div class="menu-block">
+			<div class="header cursor-pointer" layout="row" menu-toggle-down layout
+				layout-align="start end">
+					PDV
+					<span flex></span>
+					<i class="large caret up yellow icon"></i>
+			</div>
+			<div ng-class="{'menuSelected': isCurrentState('gerenciador-pdv')}" ui-sref="gerenciador-pdv" >
+				<div layout="row" class="menu-item">
+					<i class="blue large angle double right icon"></i>
+					<div flex layout-align="center" style="align-self: center">
+						Gerenciar
+					</div>
 				</div>
-				<i style="position: relative; float: right" class="material-icons md-18">shopping_cart</i>
 			</div>
-		</a>
-	</div>
-</div>
-<div class="item">
-	<div class="header cursor-pointer" menu-toggle-down>
-		<i class="large caret up yellow icon"></i>
-		Caixa
-	</div>
-	<div class="menu">
-		<a ng-class="{'menuSelected': isCurrentState('caixa')}" class="item menuItem" ui-sref="caixa" >
-			<div layout="row">
-				<i class="blue large angle double right icon"></i>
-				<div flex layout-align="center" style="align-self: center">
-					Gerenciar
+		</div>
+
+		<div class="menu-block">
+			<div class="header cursor-pointer" layout="row" menu-toggle-down layout layout-align="start end">
+					Caixa
+					<span flex></span>
+					<i class="large caret up yellow icon"></i>
+			</div>
+			<div>
+				<div ng-class="{'menuSelected': isCurrentState('caixa')}" class="menu-item" ui-sref="caixa" >
+					<div layout="row">
+						<i class="blue large angle double right icon"></i>
+						<div flex layout-align="center" style="align-self: center">
+							Gerenciar
+						</div>
+					</div>
 				</div>
-				<i style="position: relative; float: right" class="material-icons md-18">shopping_cart</i>
 			</div>
-		</a>
-	</div>
-</div>
-<div class="item">
-	<div class="header cursor-pointer" menu-toggle-down>
-		<i class="large caret up yellow icon"></i>
-		Fornecedor
-	</div>
-	<div class="menu">
-		<a ng-class="{'menuSelected': isCurrentState('cadastro-fornecedor')}" class="item menuItem" ui-sref="cadastro-fornecedor" >
-			<div layout="row">
-				<i class="blue large angle double right icon"></i>
-				<div flex layout-align="center" style="align-self: center">
-					Cadastrar
+		</div>
+
+		<div class="menu-block">
+			<div class="header cursor-pointer tal" menu-toggle-down layout layout-align="start end">
+				Fornecedor
+				<span flex></span>
+				<i class="large caret up yellow icon"></i>
+			</div>
+			<div >
+				<div ng-class="{'menuSelected': isCurrentState('cadastro-fornecedor')}" class="menu-item" ui-sref="cadastro-fornecedor" >
+					<div layout="row">
+						<i class="blue large angle double right icon"></i>
+						<div flex layout-align="start" style="align-self: center">
+							Cadastrar
+						</div>
+					</div>
 				</div>
-				<i style="position: relative; float: right" class="material-icons md-18">add_box</i>
+				<div ng-class="{'menuSelected': isCurrentState('consulta-fornecedor')}" class="menu-item" ui-sref="consulta-fornecedor" >
+					<div layout="row">
+						<i class="blue large angle double right icon"></i>
+						<div flex>
+							Consultar
+						</div>
+					</div>
+				</div>
 			</div>
-		</a>
-		<a ng-class="{'menuSelected': isCurrentState('consulta-fornecedor')}" class="item menuItem" ui-sref="consulta-fornecedor" >
+		</div>
+
+		<div class="menu-block">
+			<div class="header cursor-pointer" menu-toggle-down layout layout-align="start end">
+				Insumos
+				<span flex></span>
+				<i class="large caret up yellow icon"></i>
+			</div>
 			<div>
-				<i class="blue large angle double right icon"></i>
-				Consultar
-				<i style="position: relative; float: right" class="material-icons md-18">search</i>
+				<div ng-class="{'menuSelected': isCurrentState('cadastro-insumo')}" class="menu-item" ui-sref="cadastro-insumo" >
+					<div>
+						<i class="blue large angle double right icon"></i>
+						Cadastrar
+					</div>
+				</div>
+				<div ng-class="{'menuSelected': isCurrentState('consulta-insumos')}" class="menu-item" ui-sref="consulta-insumos">
+					<div>
+						<i class="blue large angle double right icon"></i>
+						Consultar
+					</div>
+				</div>
 			</div>
-		</a>
-	</div>
-</div>
-<div class="item">
-	<div class="header cursor-pointer" menu-toggle-down>
-		<i class="large caret up yellow icon"></i>
-		Insumos
-	</div>
-	<div class="menu">
-		<a ng-class="{'menuSelected': isCurrentState('cadastro-insumo')}" class="item menuItem" ui-sref="cadastro-insumo" >
+		</div>
+
+		<div class="menu-block">
+			<div class="header cursor-pointer" menu-toggle-down layout layout-align="start end">
+				Produtos
+				<span flex></span>
+				<i class="large caret up yellow icon"></i>
+			</div>
 			<div>
-				<i class="blue large angle double right icon"></i>
-				Cadastrar
-				<i style="position: relative; float: right" class="material-icons md-18">add_box</i>
+				<div ng-class="{'menuSelected': isCurrentState('cadastro-produto')}" class="menu-item" ui-sref="cadastro-produto">
+					<div>
+						<i class="blue large angle double right icon"></i>
+						Cadastrar
+					</div>
+				</div>
+				<div ng-class="{'menuSelected': isCurrentState('consulta-produtos')}" class="menu-item" ui-sref="consulta-produtos" >
+					<div>
+						<i class="blue large angle double right icon"></i>
+						Consultar
+					</div>
+				</div>
 			</div>
-		</a>
-		<a ng-class="{'menuSelected': isCurrentState('consulta-insumos')}" class="item menuItem" ui-sref="consulta-insumos">
-			<div>
-				<i class="blue large angle double right icon"></i>
-				Consultar
-				<i style="position: relative; float: right" class="material-icons md-18">search</i>
-			</div>
-		</a>
-	</div>
-</div>
-<div class="item">
-	<div class="header cursor-pointer" menu-toggle-down>
-		<i class="large caret up yellow icon"></i>
-		Produtos
-	</div>
-	<div class="menu">
-		<a ng-class="{'menuSelected': isCurrentState('cadastro-produto')}" class="item menuItem" ui-sref="cadastro-produto">
-			<div>
-				<i class="blue large angle double right icon"></i>
-				Cadastrar
-				<i style="position: relative; float: right" class="material-icons md-18">add_box</i>
-			</div>
-		</a>
-		<a ng-class="{'menuSelected': isCurrentState('consulta-produtos')}" class="item menuItem" ui-sref="consulta-produtos" >
-			<div>
-				<i class="blue large angle double right icon"></i>
-				Consultar
-				<i style="position: relative; float: right" class="material-icons md-18">search</i>
-			</div>
-		</a>
-	</div>
-</div>
-</md-content>
+		</div>
+
+	</md-content>
+
 </md-sidenav>
-<script>
-	$(document).ready(function(){
-
-		/* MENU */
-
-		var speed = 100;
-		$('.menuItem').hover(function(){
-			$(this).animate({ left: '10px' }, speed);
-		},function(){
-			$(this).animate({ left: '-2px' }, speed);
-		});
-
-		/* END MENU */
-	});
-
-</script>

@@ -20,30 +20,27 @@
 <body ng-controller="mainController" layout="row" ng-cloak>
 
    <!-- MENU -->
-   <div  ng-include="'menu.html'" ></div>
+   <div  ng-include="'menu.html'" include-replace></div>
 
-   <div layout="column" flex>
+   <div layout="column" role="main" flex>
 
-      <header>
-         <div ng-if="userLogged.isLoggedIn" class="ui top attached inverted menu">
-
-            <div class="right menu">
-               <a ng-click="logout()" class="active red item"> Logout </a>
-            </div>
-         </div>
-      </header>
-
-
-
-      <!-- CONTENT -->
-      <div ui-view="starterContent" layout="column" layout-padding layout-wrap flex>
-         <div layout="row">
-            Carregando...
-            <span>
-               <md-progress-circular md-diameter="16"></md-progress-circular>
-            </span>
+      <!-- HEADER BAR -->
+      <div ng-if="userLogged.isLoggedIn" class="ui top attached inverted menu">
+         <div class="right menu">
+            <a ng-click="logout()" class="active red item"> Logout </a>
          </div>
       </div>
+
+      <!-- CONTENT -->
+      <md-content ui-view="starterContent" md-scroll-y layout="column" flex>
+          <div layout="row">
+             Carregando...
+             <span>
+                <md-progress-circular md-diameter="16"></md-progress-circular>
+             </span>
+          </div>
+      </md-content>
+
    </div>
 
 

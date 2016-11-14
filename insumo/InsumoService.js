@@ -10,7 +10,7 @@ function insumoService($http, APP_CONFIG) {
 	};
 
 	this.findOne = function(idInsumo) {
-		return $http.get(rest_resource_url + idInsumo);
+		return $http.get(rest_resource_url + "/" + idInsumo);
 	};
 
 	this.findAllPage = function(page, size) {

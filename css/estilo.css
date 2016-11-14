@@ -32,13 +32,41 @@
 
 /* MENU */
 .menuSelected {
-	background-color: yellow!important;
-   border-color: #FBBD08!important;
+	background-color: yellow !important;
+   border-color: #FBBD08 !important;
 	color: black !important;
 }
 
-.item .header:hover {
-	color: rgba(0, 215, 255, 0.88);
+.menu-block {
+	margin: 0px 8px 0px 8px !important;
+}
+
+.menu-block .header {
+	transition: all .3s !important;
+	color: black !important;
+	font-weight: bold;
+}
+.menu-block .header:hover {
+	background: rgba(236, 239, 241, 0.56) !important;
+	color: #00aaff !important;
+	-webkit-transition: none !important;
+	transition: none !important;
+	cursor: pointer;
+}
+
+.menu-block > div > .menu-item{
+	transition: all .3s !important;
+	color: #78909C !important;
+	padding-left: 10px;
+}
+
+.menu-block > div > .menu-item:hover {
+	background: rgba(236, 239, 241, 0.56) !important;
+	color: #00aaff !important;
+	-webkit-transition: none !important;
+	transition: none !important;
+	cursor: pointer;
+	padding-left: 15px;
 }
 
 /* END MENU */
