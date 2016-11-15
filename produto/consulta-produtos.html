@@ -34,7 +34,12 @@
 								ng-repeat="produto in produtosPage.content">
 								<td>{{produto.idProduto}}</td>
 								<td>{{produto.nome}}</td>
-								<td>{{produto.status.descricao}}</td>
+								<td>
+									<span ng-if="produto.status.descricao === 'Inativo'"
+										class="ui tiny red label pad-3">{{produto.status.descricao}}</span>
+									<span ng-if="produto.status.descricao === 'Ativo'"
+										class="ui tiny green label pad-3">{{produto.status.descricao}}</span>
+								</td>
 								<td class="text-align-center" >
 									<md-checkbox aria-label="Checkbox No Ink"
 										ng-click="toggleStatus($index)"
