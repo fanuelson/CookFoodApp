@@ -8,7 +8,14 @@
 
 .comandas md-whiteframe {
 	margin: 15px;
-	height: 100px
+	height: 100px;
+	transition: box-shadow .5s;
+}
+
+.comandas md-whiteframe:hover {
+	color: #1E88E5;
+	border: 2px solid #2196F3;
+	box-shadow: 0 8px 8px rgba(0,0,0,0.24),0 0 8px rgba(0,0,0,0.12);
 }
 
 /* LOGIN PAGE */
