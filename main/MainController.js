@@ -1,4 +1,4 @@
-function mainController($scope, $state, APP_CONFIG, tokenService) {
+function mainController($scope, $mdSidenav, $state, APP_CONFIG, tokenService) {
 
 	$scope.userLogged = {
 			isLoggedIn : false
@@ -19,10 +19,19 @@ function mainController($scope, $state, APP_CONFIG, tokenService) {
 	}
 
 	$scope.updateIsLoggedIn();
+
+	$scope.toggleMenu = toggleMenu('sideBarMenu');
+
+	function toggleMenu(componentId) {
+		return function() {
+			$mdSidenav(componentId).toggle();
+		}
+	}
 }
 
 var depends = [
     '$scope',
+	 '$mdSidenav',
     '$state',
     'APP_CONFIG',
     'tokenService',

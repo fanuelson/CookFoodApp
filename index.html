@@ -26,6 +26,9 @@
 
       <!-- HEADER BAR -->
       <div ng-if="userLogged.isLoggedIn" class="ui top attached inverted menu">
+         <md-button ng-show="!$mdMedia('gt-md')" ng-click="toggleMenu()">
+            <md-icon class="md-white">menu</md-icon>
+         </md-button>
          <div class="right menu">
             <a ng-click="logout()" class="active red item"> Logout </a>
          </div>
