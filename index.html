@@ -26,7 +26,7 @@
 
       <!-- HEADER BAR -->
       <div ng-if="userLogged.isLoggedIn" class="ui top attached inverted menu">
-         <md-button ng-show="!$mdMedia('gt-md')" ng-click="toggleMenu()">
+         <md-button  ng-click="toggleMenu()" class="hide-gt-sm">
             <md-icon class="md-white">menu</md-icon>
          </md-button>
          <div class="right menu">
