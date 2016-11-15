@@ -20,6 +20,7 @@
 		$scope.composicao = {};
 
 		$scope.findOneParam = function() {
+			if($stateParams.idProd) {
 				$promiseFindOne = produtoService.findOne($stateParams.idProd);
 				$promiseFindOne
 				.success(function(res){
@@ -31,6 +32,7 @@
 				.error(function(res){
 					console.log(res);
 				});
+			}
 		}
 
 		$scope.findOneParam();

@@ -37,12 +37,12 @@
 	color: black !important;
 }
 
-.menu-block {
-	margin: 0px 8px 0px 8px !important;
+.menu-block > .header {
+	padding: 2px 2px 2px 10px !important;
 }
 
 .menu-block .header {
-	transition: all .3s !important;
+	transition: all .5s !important;
 	color: black !important;
 	font-weight: bold;
 }
@@ -55,9 +55,9 @@
 }
 
 .menu-block > div > .menu-item{
-	transition: all .3s !important;
+	transition: all .5s !important;
 	color: #78909C !important;
-	padding-left: 10px;
+	padding: 2px 2px 2px 10px;
 }
 
 .menu-block > div > .menu-item:hover {
@@ -66,7 +66,7 @@
 	-webkit-transition: none !important;
 	transition: none !important;
 	cursor: pointer;
-	padding-left: 15px;
+	padding: 2px 2px 2px 15px;
 }
 
 /* END MENU */
