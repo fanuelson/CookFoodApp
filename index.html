@@ -20,7 +20,7 @@
 <body ng-controller="mainController" layout="row" ng-cloak>
 
    <!-- MENU -->
-   <div  ng-include="'menu.html'" include-replace></div>
+   <div ng-if="userLogged.isLoggedIn" ng-include="'menu.html'" include-replace></div>
 
    <div layout="column" role="main" flex>
 
