@@ -5,7 +5,6 @@ function loginController($scope, authService, tokenService, APP_CONFIG) {
 	$scope.userLogged.isLoggedIn = false;
 
 	$scope.login = function() {
-		console.log($scope.user.login + " " + $scope.user.senha);
 		$promiseLogin = authService.login($scope.user);
 
 		$promiseLogin.success(function(res){

@@ -1,9 +1,5 @@
 function cadastroInsumoController($scope, APP_CONFIG, $stateParams, insumoService, medidaService) {
 
-	console.log($stateParams.idInsumo);
-
-
-
 	$scope.headerMessage = "Cadastro de Insumo";
 
 	$scope.formInsumoLoading = true;
