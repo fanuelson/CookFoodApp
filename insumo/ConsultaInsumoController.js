@@ -79,15 +79,15 @@
 		$scope.limparFiltroPesquisa = function() {
 			$scope.filtroPesquisa = {};
 		}
-
+		vm = this;
 		$scope.setInsumoExclusao = function(insumo) {
-			$scope.insumoExclusao = insumo;
+			vm.insumoExclusao = insumo;
 		}
 
 		$scope.del = function() {
 			startTabelaLoading();
-			console.log($scope.insumoExclusao.id);
-			$promiseDelete = insumoService.del($scope.insumoExclusao.id);
+			console.log(vm.insumoExclusao.id);
+			$promiseDelete = insumoService.del(vm.insumoExclusao.id);
 			$promiseDelete
 			.success(function(data) {
 				$scope.findAllInsumosPageFilterBy($scope.page);
