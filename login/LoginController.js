@@ -13,7 +13,7 @@ function loginController($scope, authService, tokenService, APP_CONFIG) {
 			$scope.mensagemErro = null;
 		}).error(function(res){
 			console.log('LOGIN ERRO');
-			$scope.mensagemErro = res.message;
+			$scope.mensagemErro = res.mensagem;
 			$scope.updateIsLoggedIn();
 		});
 	}

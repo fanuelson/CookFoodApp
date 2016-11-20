@@ -30,7 +30,7 @@
 			},
 
 			responseError : function(res) {
-				if(res.data && res.data.message == 'Invalid token') {
+				if(res.status==401) {
 					console.log(res.data.message);
 					tokenService.removeToken();
 					$injector.get('$state').transitionTo('login');
