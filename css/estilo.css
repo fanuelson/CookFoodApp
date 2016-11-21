@@ -91,6 +91,10 @@
 
 /* Margins */
 
+.m-a-5
+{
+	margin: 5px 0 !important;
+}
 .m-a-10
 {
 	margin: 10px 0 !important;

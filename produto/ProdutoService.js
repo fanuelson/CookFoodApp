@@ -7,6 +7,11 @@ function produtoService($http, APP_CONFIG) {
 		return $http.get(rest_url + '/produtos/page' + pageParams);
 	};
 
+	this.findAllPageByFilter = function(page, size, filtro) {
+		var pageParams = "?page="+page+"&size="+size;
+		return $http.post(rest_url + '/produtos/page/filterBy' + pageParams, filtro);
+	};
+
 	this.findOne = function(idProd) {
 		return $http.get(rest_url + '/produtos/' + idProd);
 	};

@@ -1,10 +1,30 @@
 function consultaProdutosController($scope, $mdToast, APP_CONFIG ,produtoService) {
 
+	$scope.cycle = '' ;
 	$scope.headerMessage = "Produtos";
 
 	$scope.pageSize = APP_CONFIG.DEFAULT_PAGE_SIZE;
 
 	$scope.tabelaProdutoLoading = true;
+
+	$scope.filtro = {
+		status: 'Todos'
+	};
+
+	$scope.status = [
+		{
+			id: 'Todos',
+			descricao: 'Todos'
+		},
+		{
+			id: 'A',
+			descricao: 'Ativo'
+		},
+		{
+			id: 'I',
+			descricao: 'Inativo'
+		}
+	]
 
 	var stopTabelaLoading = function() {
 		$scope.tabelaProdutoLoading = false;
@@ -15,7 +35,6 @@ function consultaProdutosController($scope, $mdToast, APP_CONFIG ,produtoService
 	}
 
 	$scope.produto = {};
-
 	$scope.produtoExclusao = {};
 	$scope.setProdutoExclusao = function(produto) {
 		$scope.produtoExclusao = produto;
@@ -23,14 +42,23 @@ function consultaProdutosController($scope, $mdToast, APP_CONFIG ,produtoService
 
 	$scope.findAllProductsPage = function(page) {
 			startTabelaLoading();
-			$promisePage = produtoService.findAllPage(page, $scope.pageSize);
+			$promisePage = produtoService.findAllPageByFilter(page, $scope.pageSize, $scope.filtro);
 			$promisePage.success(function(data) {
 				$scope.produtosPage = data;
 				stopTabelaLoading();
 			}).error(function(data){
 				stopTabelaLoading();
 			});
+	}
 
+	$scope.pesquisar = function() {
+		$scope.findAllProductsPage(0);
+	}
+
+	$scope.limparFiltroPesquisa = function() {
+		$scope.filtro = {
+			status: 'Todos'
+		};
 	}
 
 	$scope.toggleStatus = function(indexProd) {
@@ -95,7 +123,7 @@ function consultaProdutosController($scope, $mdToast, APP_CONFIG ,produtoService
 		$scope.pageSize = pageSize;
 	}
 
-	var $promisePage = produtoService.findAllPage(0, $scope.pageSize);
+	var $promisePage = produtoService.findAllPageByFilter(0, $scope.pageSize, $scope.filtro);
 
 	$promisePage.success(function(data) {
 		$scope.produtosPage = data;
